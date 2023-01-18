@@ -6,9 +6,7 @@ const App: React.FC = () => {
 
 
 	return (
-		<p>
-			Работает
-		</p>
+		<div className="app"></div>
 	);
 };
 

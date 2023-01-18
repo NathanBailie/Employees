@@ -1,0 +1,17 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+html {
+	background: #f1eddf;
+}
+
+.app {
+	max-width: 900px;
+	margin: 15px auto 0;
+	padding: 15px;
+	border: 1px solid blue;
+}
