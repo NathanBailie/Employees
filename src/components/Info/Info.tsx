@@ -1,6 +1,6 @@
 import './info.scss';
 
-const Info = () => {
+const Info: React.FC = () => {
 
 
 	return (

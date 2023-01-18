@@ -1,6 +1,6 @@
 import './adder.scss';
 
-const Adder = () => {
+const Adder: React.FC = () => {
 
 
 	return (

@@ -31,6 +31,36 @@
 		grid-column: 1 / 8;
 		padding: 5px 15px;
 		justify-content: left;
+
+		&_marked {
+			font-size: 18px;
+			font-weight: bold;
+			color: #cda71d;
+		}
+
+		&_marked,
+		&_raised {
+			font-weight: bold;
+		}
+
+		&_raised,
+		&_markedAndRaised {
+			text-decoration: underline;
+			text-decoration-thickness: 3px;
+		}
+
+		&_raised {
+			font-size: 20px;
+			font-style: italic;
+			text-decoration-color: #40cd6c;
+			color: #76bb88;
+		}
+
+		&_markedAndRaised {
+			font-size: 22px;
+			text-decoration-color: #a765af;
+			color: #9b3ac3;
+		}
 	}
 
 	&__salary {
@@ -48,25 +78,57 @@
 		align-items: center;
 	}
 
+	&__mark,
+	&__raise,
+	&__delete {
+		font-size: 26px;
+		font-weight: bold;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+
+		&:active {
+			transform: scale(1);
+		}
+	}
+
 	&__mark {
 		grid-column: 1 / 4;
+		color: #e7d06b;
+
+		&:hover {
+			color: #F2D866;
+		}
+
+		&:active {
+			color: #e5be12;
+		}
 	}
 
 	&__raise {
 		grid-column: 4 / 7;
+		color: LimeGreen;
+
+		&:hover {
+			color: #65e565;
+		}
+
+		&:active {
+			color: #11c111;
+		}
 	}
 
 	&__delete {
 		grid-column: 7 / 10;
-	}
-
-	&__mark,
-	&__raise,
-	&__delete {
-		font-size: 22px;
+		color: tomato;
 
 		&:hover {
-			transform: scale(1.2);
+			color: red;
+		}
+
+		&:active {
+			color: brown;
 		}
 	}
 }
