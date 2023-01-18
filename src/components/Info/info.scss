@@ -1,0 +1,22 @@
+.info {
+	background-color: #3d5a80;
+	color: white;
+	padding: 20px;
+	margin: 0 auto 20px;
+	box-shadow: 5px 5px 15px rgb(173, 173, 173);
+
+	&__title {
+		font-size: 28px;
+		margin: 0 0 20px 0;
+	}
+
+	&__employees {
+		font-size: 22px;
+		margin: 0 0 20px 0;
+	}
+
+	&__premium {
+		font-size: 22px;
+		margin: 0;
+	}
+}

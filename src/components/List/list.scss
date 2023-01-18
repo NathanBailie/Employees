@@ -1,0 +1,72 @@
+.list {
+	user-select: none;
+	margin: 0 auto 20px;
+	box-shadow: 5px 5px 15px rgb(173, 173, 173);
+
+
+	&__item {
+		padding: 5px 0px;
+		display: grid;
+		grid-template: minmax(20px, auto) / repeat(20, 1fr);
+		background: #fffef9;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid rgb(185, 185, 185);
+		}
+	}
+
+	&__name,
+	&__salary,
+	&__mark,
+	&__raise,
+	&__delete {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		line-height: 19px;
+	}
+
+	&__name {
+		grid-column: 1 / 8;
+		padding: 5px 15px;
+		justify-content: left;
+	}
+
+	&__salary {
+		grid-column: 8 / 16;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__actions {
+		grid-column: 16 / 20;
+		display: grid;
+		grid-template: minmax(20px, auto) / repeat(9, 1fr);
+		text-align: center;
+		align-items: center;
+	}
+
+	&__mark {
+		grid-column: 1 / 4;
+	}
+
+	&__raise {
+		grid-column: 4 / 7;
+	}
+
+	&__delete {
+		grid-column: 7 / 10;
+	}
+
+	&__mark,
+	&__raise,
+	&__delete {
+		font-size: 22px;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}

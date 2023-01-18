@@ -1,0 +1,51 @@
+.adder {
+	background-color: #3d5a80;
+	padding: 20px;
+	margin: 0 auto;
+	box-shadow: 5px 5px 15px rgb(173, 173, 173);
+
+	&__title {
+		font-size: 22px;
+		color: white;
+		margin-bottom: 10px;
+	}
+
+	&__wraper {
+		display: flex;
+	}
+
+	input {
+		height: 30px;
+		margin-bottom: 10px;
+		width: 100%;
+		padding: 5px 15px;
+		border: none;
+		outline-color: BurlyWood;
+		user-select: none;
+		font-style: italic;
+		margin-right: 15px;
+		font-size: 17px;
+		line-height: 17px;
+
+		&:focus {
+			box-shadow: 0px 0px 4px 3px BurlyWood;
+		}
+	}
+
+	button {
+		height: 30px;
+		border: 1px solid white;
+		padding: 5px 10px;
+		background-color: #3d5a80;
+		color: white;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0px 3px 5px white;
+		}
+
+		&:active {
+			transform: scale(0.95);
+		}
+	}
+}
