@@ -5,7 +5,7 @@ type Props = {
 		name: string,
 		salary: number,
 		id: string,
-		marked: boolean,
+		premiumed: boolean,
 		raised: boolean,
 	}[],
 	onToggleProperty: (id: string | number, property: string) => void,
@@ -15,18 +15,18 @@ type Props = {
 
 const List: React.FC<Props> = ({ employee, onToggleProperty, onDeleteEmployee }) => {
 	const result = employee.map(person => {
-		const { name, salary, id, marked, raised } = person;
+		const { name, salary, id, premiumed, raised } = person;
 
 		let nameClasses = 'list__name';
-		let markClasses = 'list__mark';
+		let premiumClasses = 'list__premiumed';
 		let raiseClasses = 'list__raise';
-		if (marked && raised) {
-			nameClasses += ' list__name_markedAndRaised';
-			markClasses += ' list__mark_active';
+		if (premiumed && raised) {
+			nameClasses += ' list__name_premiumedAndRaised';
+			premiumClasses += ' list__premiumed_active';
 			raiseClasses += ' list__raise_active';
-		} else if (marked) {
-			nameClasses += ' list__name_marked';
-			markClasses += ' list__mark_active';
+		} else if (premiumed) {
+			nameClasses += ' list__name_premiumed';
+			premiumClasses += ' list__premiumed_active';
 		} else if (raised) {
 			nameClasses += ' list__name_raised';
 			raiseClasses += ' list__raise_active';
@@ -42,20 +42,20 @@ const List: React.FC<Props> = ({ employee, onToggleProperty, onDeleteEmployee })
 				</div>
 				<div className="list__actions">
 					<button
-						className={markClasses}
-						title="Mark this person"
-						onClick={() => onToggleProperty(id, 'marked')}>
+						className={premiumClasses}
+						title="Премировать сотрудника"
+						onClick={() => onToggleProperty(id, 'premiumed')}>
 						&#9733;
 					</button>
 					<button
 						className={raiseClasses}
-						title="Raise this person"
+						title="Повысить сотрудника"
 						onClick={() => onToggleProperty(id, 'raised')}>
 						&#36;
 					</button>
 					<button
 						className="list__delete"
-						title="Delete this person"
+						title="Удалить сотрудника"
 						onClick={() => onDeleteEmployee(id)}>
 						&#10008;
 					</button>

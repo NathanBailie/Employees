@@ -17,7 +17,7 @@
 
 	&__name,
 	&__salary,
-	&__mark,
+	&__premiumed,
 	&__raise,
 	&__delete {
 		display: flex;
@@ -32,9 +32,9 @@
 		justify-content: left;
 		transition: all 0.1s linear;
 
-		&_marked,
+		&_premiumed,
 		&_raised,
-		&_markedAndRaised {
+		&_premiumedAndRaised {
 			font-size: 20px;
 			text-decoration: underline;
 			font-style: italic;
@@ -42,7 +42,7 @@
 			text-decoration-thickness: 4px;
 		}
 
-		&_marked {
+		&_premiumed {
 			text-decoration-color: orange;
 		}
 
@@ -50,7 +50,7 @@
 			text-decoration-color: #3cb75c;
 		}
 
-		&_markedAndRaised {
+		&_premiumedAndRaised {
 			font-size: 22px;
 			// text-decoration: none;
 			text-decoration-color: gold;
@@ -90,7 +90,7 @@
 		}
 	}
 
-	&__mark,
+	&__premiumed,
 	&__raise,
 	&__delete {
 		font-size: 26px;
@@ -107,7 +107,7 @@
 		}
 	}
 
-	&__mark {
+	&__premiumed {
 		grid-column: 1 / 4;
 
 		&:hover {

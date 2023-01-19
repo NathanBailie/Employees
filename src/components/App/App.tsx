@@ -16,14 +16,18 @@ const App: React.FC = () => {
 		createEmployee('Mikky B.', 1000),
 		createEmployee('Sam O.', 1200),
 	];
-	const [search, setSearch] = useState('');
 	const [employee, setEmployee] = useState(data);
+	const [companyName, setCompanyName] = useState('Company');
+	const amountOfEmployees: number = employee.length;
+	const amountOfPremiumed: number = employee.filter(person => person.premiumed).length;
+	const amountOfGoingUp: number = employee.filter(person => person.raised).length;
+	const [search, setSearch] = useState('');
 
 	interface Employee {
 		name: string,
 		salary: number,
 		id: string,
-		marked: boolean,
+		premiumed: boolean,
 		raised: boolean,
 	};
 
@@ -32,7 +36,7 @@ const App: React.FC = () => {
 			name: name,
 			salary: salary,
 			id: uuid(),
-			marked: false,
+			premiumed: false,
 			raised: false,
 		};
 	};
@@ -41,8 +45,8 @@ const App: React.FC = () => {
 		const newData = employee.map(person => {
 			if (person.id === id) {
 				let newValue;
-				if (property === 'marked') {
-					newValue = !person['marked'];
+				if (property === 'premiumed') {
+					newValue = !person['premiumed'];
 				} else {
 					newValue = !person['raised'];
 				}
@@ -60,7 +64,12 @@ const App: React.FC = () => {
 
 	return (
 		<div className="app">
-			<Info />
+			<Info
+				companyName={companyName}
+				amountOfEmployees={amountOfEmployees}
+				amountOfPremiumed={amountOfPremiumed}
+				amountOfGoingUp={amountOfGoingUp}
+			/>
 			<Filters
 				setSearch={setSearch}
 			/>
