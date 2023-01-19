@@ -3,15 +3,16 @@ import { useState } from 'react';
 
 type Props = {
 	setSearch: (value: string) => void;
+	setFilter: (value: string) => void;
 }
 
-const Filters: React.FC<Props> = ({ setSearch }) => {
+const Filters: React.FC<Props> = ({ setSearch, setFilter }) => {
 	const [buttons, setButtons] = useState([
-		{ name: 'Все сотрудники', active: true, prop: 'all', id: 1 },
-		{ name: 'На повышение', active: false, prop: 'onlyMarked', id: 2 },
-		{ name: 'З/П больше 1000$', active: false, prop: 'salaryFilter', id: 3 },
+		{ name: 'Все сотрудники', active: true, filter: 'all', id: 1 },
+		{ name: 'На премию', active: false, filter: 'premiumed', id: 2 },
+		{ name: 'На повышение', active: false, filter: 'raised', id: 3 },
+		{ name: 'З/П больше 1000$', active: false, filter: 'bySalary', id: 4 },
 	]);
-
 
 	function onChangeActiveClass(id: string | number): void {
 		const newBtns = buttons.map(b => {
@@ -24,7 +25,7 @@ const Filters: React.FC<Props> = ({ setSearch }) => {
 	};
 
 	const btnResult = buttons.map(b => {
-		const { name, active, id } = b;
+		const { name, active, id, filter } = b;
 		let btnClasses;
 		if (active) {
 			btnClasses = 'filters__button filters__button_active';
@@ -35,7 +36,7 @@ const Filters: React.FC<Props> = ({ setSearch }) => {
 		return <button
 			key={id}
 			className={btnClasses}
-			onClick={() => onChangeActiveClass(id)}
+			onClick={() => { onChangeActiveClass(id); setFilter(filter) }}
 		>{name}
 		</button>
 	});

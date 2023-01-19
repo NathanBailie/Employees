@@ -1,13 +1,12 @@
 import 'normalize.css';
 import './app.scss';
-
 import Info from '../Info/Info';
 import Filters from '../Filters/Filters';
 import List from '../List/List';
 import Adder from '../Adder/Adder';
-
 import { useState } from 'react';
 import uuid from 'react-uuid';
+import { Employee } from '../../interfaces';
 
 
 const App: React.FC = () => {
@@ -16,20 +15,16 @@ const App: React.FC = () => {
 		createEmployee('Mikky B.', 1000),
 		createEmployee('Sam O.', 1200),
 	];
-	const [employee, setEmployee] = useState(data);
+	const [employees, setEmployees] = useState(data);
 	const [companyName, setCompanyName] = useState('Company');
-	const amountOfEmployees: number = employee.length;
-	const amountOfPremiumed: number = employee.filter(person => person.premiumed).length;
-	const amountOfGoingUp: number = employee.filter(person => person.raised).length;
+	const amountOfEmployees: number = employees.length;
+	const amountOfPremiumed: number = employees.filter(person => person.premiumed).length;
+	const amountOfGoingUp: number = employees.filter(person => person.raised).length;
+	const [filter, setFilter] = useState('all');
+	const filteredData: Employee[] = onFilterData(filter);
 	const [search, setSearch] = useState('');
+	const finalData: Employee[] = onFilterBySearch(search, filteredData);
 
-	interface Employee {
-		name: string,
-		salary: number,
-		id: string,
-		premiumed: boolean,
-		raised: boolean,
-	};
 
 	function createEmployee(name: string, salary: number): Employee {
 		return {
@@ -42,7 +37,7 @@ const App: React.FC = () => {
 	};
 
 	function onToggleProperty(id: string | number, property: string) {
-		const newData = employee.map(person => {
+		const newData = employees.map(person => {
 			if (person.id === id) {
 				let newValue;
 				if (property === 'premiumed') {
@@ -54,13 +49,34 @@ const App: React.FC = () => {
 			};
 			return person;
 		});
-		setEmployee(newData);
+		setEmployees(newData);
 	};
 
 	function onDeleteEmployee(id: string | number) {
-		const newData = employee.filter(person => person.id !== id);
-		setEmployee(newData);
+		const newData = employees.filter(person => person.id !== id);
+		setEmployees(newData);
 	};
+
+	function onFilterData(filter: string): Employee[] {
+		let newData = employees;
+		if (filter === 'all') {
+			newData = employees;
+		} else if (filter === "raised") {
+			newData = employees.filter(person => person.raised);
+		} else if (filter === 'premiumed') {
+			newData = employees.filter(person => person.premiumed);
+		} else if (filter === 'bySalary') {
+			newData = employees.filter(person => person.salary > 1000);
+		};
+		return newData;
+	};
+
+	function onFilterBySearch(filter: string, data: Employee[]): Employee[] {
+		return data.filter(person =>
+			person['name'].toLowerCase()
+				.indexOf(filter.toLowerCase()) !== -1);
+	};
+
 
 	return (
 		<div className="app">
@@ -72,9 +88,10 @@ const App: React.FC = () => {
 			/>
 			<Filters
 				setSearch={setSearch}
+				setFilter={setFilter}
 			/>
 			<List
-				employee={employee}
+				finalData={finalData}
 				onToggleProperty={onToggleProperty}
 				onDeleteEmployee={onDeleteEmployee}
 			/>

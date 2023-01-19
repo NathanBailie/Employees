@@ -1,20 +1,19 @@
 import './list.scss';
+import { Employee } from '../../interfaces';
 
 type Props = {
-	employee: {
-		name: string,
-		salary: number,
-		id: string,
-		premiumed: boolean,
-		raised: boolean,
-	}[],
+	finalData: Employee[];
 	onToggleProperty: (id: string | number, property: string) => void,
 	onDeleteEmployee: (id: string | number) => void,
 };
 
 
-const List: React.FC<Props> = ({ employee, onToggleProperty, onDeleteEmployee }) => {
-	const result = employee.map(person => {
+const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee }) => {
+	if (finalData.length === 0) {
+		return <div className="list"></div>
+	};
+
+	const result = finalData.map(person => {
 		const { name, salary, id, premiumed, raised } = person;
 
 		let nameClasses = 'list__name';
