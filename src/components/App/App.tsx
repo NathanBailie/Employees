@@ -77,6 +77,12 @@ const App: React.FC = () => {
 				.indexOf(filter.toLowerCase()) !== -1);
 	};
 
+	function onCreateNewEmployee(name: string, salary: string): void {
+		const newEmployee = createEmployee(name, +salary);
+		const newData = [...employees, newEmployee];
+		setEmployees(newData);
+	};
+
 
 	return (
 		<div className="app">
@@ -95,7 +101,9 @@ const App: React.FC = () => {
 				onToggleProperty={onToggleProperty}
 				onDeleteEmployee={onDeleteEmployee}
 			/>
-			<Adder />
+			<Adder
+				onCreateNewEmployee={onCreateNewEmployee}
+			/>
 		</div>
 	);
 };
