@@ -12,9 +12,9 @@ import uuid from 'react-uuid';
 
 const App: React.FC = () => {
 	const data = [
-		createEmployee('John. C.', 800),
-		createEmployee('Mikky. B.', 1000),
-		createEmployee('Sam. O.', 1200),
+		createEmployee('John C.', 800),
+		createEmployee('Mikky B.', 1000),
+		createEmployee('Sam O.', 1200),
 	];
 	const [search, setSearch] = useState('');
 	const [employee, setEmployee] = useState(data);
@@ -37,6 +37,27 @@ const App: React.FC = () => {
 		};
 	};
 
+	function onToggleProperty(id: string | number, property: string) {
+		const newData = employee.map(person => {
+			if (person.id === id) {
+				let newValue;
+				if (property === 'marked') {
+					newValue = !person['marked'];
+				} else {
+					newValue = !person['raised'];
+				}
+				return { ...person, [property]: newValue }
+			};
+			return person;
+		});
+		setEmployee(newData);
+	};
+
+	function onDeleteEmployee(id: string | number) {
+		const newData = employee.filter(person => person.id !== id);
+		setEmployee(newData);
+	};
+
 	return (
 		<div className="app">
 			<Info />
@@ -45,6 +66,8 @@ const App: React.FC = () => {
 			/>
 			<List
 				employee={employee}
+				onToggleProperty={onToggleProperty}
+				onDeleteEmployee={onDeleteEmployee}
 			/>
 			<Adder />
 		</div>

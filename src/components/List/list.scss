@@ -23,7 +23,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		cursor: pointer;
 		line-height: 19px;
 	}
 
@@ -31,6 +30,8 @@
 		grid-column: 1 / 8;
 		padding: 5px 15px;
 		justify-content: left;
+		transition: all 0.1s linear;
+
 
 		&_marked {
 			font-size: 18px;
@@ -68,6 +69,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		cursor: text;
+
+		&:hover {
+			text-decoration: underline;
+			text-decoration-thickness: 2px;
+		}
 	}
 
 	&__actions {
@@ -76,6 +83,17 @@
 		grid-template: minmax(20px, auto) / repeat(9, 1fr);
 		text-align: center;
 		align-items: center;
+
+		button {
+			height: 30px;
+			width: 30px;
+			border: none;
+			background: #fffef9;
+
+			&:hover {
+				border-radius: 14px;
+			}
+		}
 	}
 
 	&__mark,
@@ -83,6 +101,8 @@
 	&__delete {
 		font-size: 26px;
 		font-weight: bold;
+		transition: all 0.1s linear;
+		cursor: pointer;
 
 		&:hover {
 			transform: scale(1.2);
@@ -95,7 +115,6 @@
 
 	&__mark {
 		grid-column: 1 / 4;
-		color: #e7d06b;
 
 		&:hover {
 			color: #F2D866;
@@ -104,27 +123,47 @@
 		&:active {
 			color: #e5be12;
 		}
+
+		&_active {
+			color: Orange;
+			transform: scale(1.3);
+
+			&:hover,
+			&:active {
+				color: rgb(248, 184, 66);
+				transform: scale(1.3);
+			}
+		}
 	}
 
 	&__raise {
 		grid-column: 4 / 7;
-		color: LimeGreen;
 
 		&:hover {
 			color: #65e565;
 		}
 
 		&:active {
+			color: #62da62;
+		}
+
+		&_active {
 			color: #11c111;
+			transform: scale(1.3);
+
+			&:hover,
+			&:active {
+				color: #11cf11;
+				transform: scale(1.3);
+			}
 		}
 	}
 
 	&__delete {
 		grid-column: 7 / 10;
-		color: tomato;
 
 		&:hover {
-			color: red;
+			color: tomato;
 		}
 
 		&:active {

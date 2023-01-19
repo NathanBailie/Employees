@@ -7,24 +7,30 @@ type Props = {
 		id: string,
 		marked: boolean,
 		raised: boolean,
-	}[];
+	}[],
+	onToggleProperty: (id: string | number, property: string) => void,
+	onDeleteEmployee: (id: string | number) => void,
 };
 
 
-const List: React.FC<Props> = ({ employee }) => {
+const List: React.FC<Props> = ({ employee, onToggleProperty, onDeleteEmployee }) => {
 	const result = employee.map(person => {
 		const { name, salary, id, marked, raised } = person;
 
-		let nameClasses;
+		let nameClasses = 'list__name';
+		let markClasses = 'list__mark';
+		let raiseClasses = 'list__raise';
 		if (marked && raised) {
-			nameClasses = 'list__name list__name_markedAndRaised';
+			nameClasses += ' list__name_markedAndRaised';
+			markClasses += ' list__mark_active';
+			raiseClasses += ' list__raise_active';
 		} else if (marked) {
-			nameClasses = 'list__name list__name_marked';
+			nameClasses += ' list__name_marked';
+			markClasses += ' list__mark_active';
 		} else if (raised) {
-			nameClasses = 'list__name list__name_raised';
-		} else {
-			nameClasses = 'list__name';
-		};
+			nameClasses += ' list__name_raised';
+			raiseClasses += ' list__raise_active';
+		}
 
 		return (
 			<div className="list__item" key={id}>
@@ -35,21 +41,24 @@ const List: React.FC<Props> = ({ employee }) => {
 					${salary}
 				</div>
 				<div className="list__actions">
-					<div
-						className="list__mark"
-						title="Mark this person">
+					<button
+						className={markClasses}
+						title="Mark this person"
+						onClick={() => onToggleProperty(id, 'marked')}>
 						&#9733;
-					</div>
-					<div
-						className="list__raise"
-						title="Raise this person">
+					</button>
+					<button
+						className={raiseClasses}
+						title="Raise this person"
+						onClick={() => onToggleProperty(id, 'raised')}>
 						&#36;
-					</div>
-					<div
+					</button>
+					<button
 						className="list__delete"
-						title="Delete this person">
+						title="Delete this person"
+						onClick={() => onDeleteEmployee(id)}>
 						&#10008;
-					</div>
+					</button>
 				</div>
 			</div>
 		);
