@@ -32,35 +32,29 @@
 		justify-content: left;
 		transition: all 0.1s linear;
 
-
-		&_marked {
-			font-size: 18px;
-			font-weight: bold;
-			color: #cda71d;
-		}
-
 		&_marked,
-		&_raised {
-			font-weight: bold;
-		}
-
 		&_raised,
 		&_markedAndRaised {
+			font-size: 20px;
 			text-decoration: underline;
-			text-decoration-thickness: 3px;
+			font-style: italic;
+			font-weight: bold;
+			text-decoration-thickness: 4px;
+		}
+
+		&_marked {
+			text-decoration-color: orange;
 		}
 
 		&_raised {
-			font-size: 20px;
-			font-style: italic;
-			text-decoration-color: #40cd6c;
-			color: #76bb88;
+			text-decoration-color: #3cb75c;
 		}
 
 		&_markedAndRaised {
 			font-size: 22px;
-			text-decoration-color: #a765af;
-			color: #9b3ac3;
+			// text-decoration: none;
+			text-decoration-color: gold;
+			color: #04c16a;
 		}
 	}
 
