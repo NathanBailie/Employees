@@ -4,4 +4,6 @@ export interface Employee {
 	id: string,
 	premiumed: boolean,
 	raised: boolean,
+	nameEdit: boolean,
+	salaryEdit: boolean,
 };

@@ -3,18 +3,19 @@ import { Employee } from '../../interfaces';
 
 type Props = {
 	finalData: Employee[];
-	onToggleProperty: (id: string | number, property: string) => void,
-	onDeleteEmployee: (id: string | number) => void,
+	onToggleProperty: (id: string, property: string) => void,
+	onDeleteEmployee: (id: string) => void,
+	onChangeValue: (valueName: string, newValue: string, id: string) => void,
 };
 
 
-const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee }) => {
+const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, onChangeValue }) => {
 	if (finalData.length === 0) {
 		return <div className="list"></div>
 	};
 
 	const result = finalData.map(person => {
-		const { name, salary, id, premiumed, raised } = person;
+		const { name, salary, id, premiumed, raised, nameEdit, salaryEdit } = person;
 
 		let nameClasses = 'list__name';
 		let premiumClasses = 'list__premiumed';
@@ -33,12 +34,41 @@ const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee }
 
 		return (
 			<div className="list__item" key={id}>
-				<div className={nameClasses}>{name}</div>
-				<div
-					className="list__salary"
-					title="Salary">
-					${salary}
-				</div>
+				{nameEdit ?
+					<input
+						placeholder='Имя сотрудника'
+						className='list__nameField'
+						value={name}
+						onChange={(e) => onChangeValue('name', e.target.value, id)}
+						onBlur={() => onToggleProperty(id, 'nameEdit')}
+						onKeyDown={(e) => { e.key === 'Enter' && onToggleProperty(id, 'nameEdit') }}
+					/>
+					:
+					<div
+						className={nameClasses}
+						title="Изменить имя"
+						onClick={() => onToggleProperty(id, 'nameEdit')}>
+						{name}
+					</div>
+				}
+				{salaryEdit ?
+					<input
+						type='number'
+						placeholder='Зарплата'
+						className='list__salaryField'
+						value={salary}
+						onChange={(e) => onChangeValue('salary', e.target.value, id)}
+						onBlur={() => onToggleProperty(id, 'salaryEdit')}
+						onKeyDown={(e) => { e.key === 'Enter' && onToggleProperty(id, 'salaryEdit') }}
+					/>
+					:
+					<div
+						className="list__salary"
+						title="Изменить зарплату"
+						onClick={() => onToggleProperty(id, 'salaryEdit')}>
+						${salary}
+					</div>
+				}
 				<div className="list__actions">
 					<button
 						className={premiumClasses}

@@ -33,6 +33,8 @@ const App: React.FC = () => {
 			id: uuid(),
 			premiumed: false,
 			raised: false,
+			nameEdit: false,
+			salaryEdit: false,
 		};
 	};
 
@@ -42,8 +44,12 @@ const App: React.FC = () => {
 				let newValue;
 				if (property === 'premiumed') {
 					newValue = !person['premiumed'];
-				} else {
+				} else if (property === 'raised') {
 					newValue = !person['raised'];
+				} else if (property === 'nameEdit') {
+					newValue = !person['nameEdit'];
+				} else if (property === 'salaryEdit') {
+					newValue = !person['salaryEdit'];
 				}
 				return { ...person, [property]: newValue }
 			};
@@ -83,6 +89,28 @@ const App: React.FC = () => {
 		setEmployees(newData);
 	};
 
+	function onChangeValue(valueName: string, newValue: string, id: string): void {
+		if (valueName === 'name') {
+			const newData = employees.map(person => {
+				if (person.id === id) {
+					return { ...person, ['name']: newValue };
+				};
+				return person;
+			});
+			setEmployees(newData);
+		};
+		if (valueName === 'salary') {
+			const newData = employees.map(person => {
+				if (person.id === id) {
+					return { ...person, ['salary']: +newValue };
+				};
+				return person;
+			});
+			setEmployees(newData);
+		};
+
+	}
+
 
 	return (
 		<div className="app">
@@ -100,6 +128,7 @@ const App: React.FC = () => {
 				finalData={finalData}
 				onToggleProperty={onToggleProperty}
 				onDeleteEmployee={onDeleteEmployee}
+				onChangeValue={onChangeValue}
 			/>
 			<Adder
 				onCreateNewEmployee={onCreateNewEmployee}
