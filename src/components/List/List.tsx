@@ -8,7 +8,6 @@ type Props = {
 	onChangeValue: (valueName: string, newValue: string, id: string) => void,
 };
 
-
 const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, onChangeValue }) => {
 	if (finalData.length === 0) {
 		return <div className="list"></div>
@@ -16,7 +15,6 @@ const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, 
 
 	const result = finalData.map(person => {
 		const { name, salary, id, premiumed, raised, nameEdit, salaryEdit } = person;
-
 		let nameClasses = 'list__name';
 		let premiumClasses = 'list__premiumed';
 		let raiseClasses = 'list__raise';
@@ -47,7 +45,8 @@ const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, 
 					<div
 						className={nameClasses}
 						title="Изменить имя"
-						onClick={() => onToggleProperty(id, 'nameEdit')}>
+						onClick={() => onToggleProperty(id, 'nameEdit')}
+					>
 						{name}
 					</div>
 				}
@@ -65,7 +64,8 @@ const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, 
 					<div
 						className="list__salary"
 						title="Изменить зарплату"
-						onClick={() => onToggleProperty(id, 'salaryEdit')}>
+						onClick={() => onToggleProperty(id, 'salaryEdit')}
+					>
 						${salary}
 					</div>
 				}
@@ -73,25 +73,29 @@ const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, 
 					<button
 						className={premiumClasses}
 						title="Премировать сотрудника"
-						onClick={() => onToggleProperty(id, 'premiumed')}>
+						onClick={() => onToggleProperty(id, 'premiumed')}
+					>
 						&#9733;
 					</button>
 					<button
 						className={raiseClasses}
 						title="Повысить сотрудника"
-						onClick={() => onToggleProperty(id, 'raised')}>
+						onClick={() => onToggleProperty(id, 'raised')}
+					>
 						&#36;
 					</button>
 					<button
 						className="list__delete"
 						title="Удалить сотрудника"
-						onClick={() => onDeleteEmployee(id)}>
+						onClick={() => onDeleteEmployee(id)}
+					>
 						&#10008;
 					</button>
 				</div>
 			</div>
 		);
 	});
+
 
 	return (
 		<div className="list">

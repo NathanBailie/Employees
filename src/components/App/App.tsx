@@ -25,7 +25,6 @@ const App: React.FC = () => {
 	const [search, setSearch] = useState('');
 	const finalData: Employee[] = onFilterBySearch(search, filteredData);
 
-
 	function createEmployee(name: string, salary: number): Employee {
 		return {
 			name: name,
@@ -38,7 +37,7 @@ const App: React.FC = () => {
 		};
 	};
 
-	function onToggleProperty(id: string | number, property: string) {
+	function onToggleProperty(id: string | number, property: string): void {
 		const newData = employees.map(person => {
 			if (person.id === id) {
 				let newValue;
@@ -58,7 +57,7 @@ const App: React.FC = () => {
 		setEmployees(newData);
 	};
 
-	function onDeleteEmployee(id: string | number) {
+	function onDeleteEmployee(id: string | number): void {
 		const newData = employees.filter(person => person.id !== id);
 		setEmployees(newData);
 	};
@@ -90,26 +89,14 @@ const App: React.FC = () => {
 	};
 
 	function onChangeValue(valueName: string, newValue: string, id: string): void {
-		if (valueName === 'name') {
-			const newData = employees.map(person => {
-				if (person.id === id) {
-					return { ...person, ['name']: newValue };
-				};
-				return person;
-			});
-			setEmployees(newData);
-		};
-		if (valueName === 'salary') {
-			const newData = employees.map(person => {
-				if (person.id === id) {
-					return { ...person, ['salary']: +newValue };
-				};
-				return person;
-			});
-			setEmployees(newData);
-		};
-
-	}
+		const newData = employees.map(person => {
+			if (person.id === id) {
+				return { ...person, [valueName]: newValue };
+			};
+			return person;
+		});
+		setEmployees(newData);
+	};
 
 
 	return (

@@ -3,8 +3,8 @@ import './info.scss';
 type Props = {
 	companyName: string,
 	amountOfEmployees: number,
-	amountOfPremiumed: number
-	amountOfGoingUp: number
+	amountOfPremiumed: number,
+	amountOfGoingUp: number,
 };
 
 const Info: React.FC<Props> = ({ companyName, amountOfEmployees, amountOfPremiumed, amountOfGoingUp }) => {

@@ -2,8 +2,8 @@ import './filters.scss';
 import { useState } from 'react';
 
 type Props = {
-	setSearch: (value: string) => void;
-	setFilter: (value: string) => void;
+	setSearch: (value: string) => void,
+	setFilter: (value: string) => void,
 }
 
 const Filters: React.FC<Props> = ({ setSearch, setFilter }) => {
@@ -37,7 +37,8 @@ const Filters: React.FC<Props> = ({ setSearch, setFilter }) => {
 			key={id}
 			className={btnClasses}
 			onClick={() => { onChangeActiveClass(id); setFilter(filter) }}
-		>{name}
+		>
+			{name}
 		</button>
 	});
 
@@ -47,7 +48,8 @@ const Filters: React.FC<Props> = ({ setSearch, setFilter }) => {
 			<input
 				className='filters__finder'
 				placeholder="Найти сотрудника"
-				onChange={(e) => setSearch(e.target.value)} />
+				onChange={(e) => setSearch(e.target.value)}
+			/>
 			<div className="filters__buttons">
 				{btnResult}
 			</div>

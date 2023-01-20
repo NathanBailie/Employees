@@ -26,7 +26,7 @@ const Adder: React.FC<Props> = ({ onCreateNewEmployee }) => {
 		onCreateNewEmployee(name, salary);
 	};
 
-	let errMessClasses = 'adder__errorMessage';
+	let errMessClasses: string = 'adder__errorMessage';
 	if (error) {
 		errMessClasses += ' adder__errorMessage_active'
 	};
