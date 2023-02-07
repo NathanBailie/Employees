@@ -4,7 +4,7 @@ import { useState } from 'react';
 type Props = {
 	setSearch: (value: string) => void,
 	setFilter: (value: string) => void,
-}
+};
 
 const Filters: React.FC<Props> = ({ setSearch, setFilter }) => {
 	const [buttons, setButtons] = useState([

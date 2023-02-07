@@ -8,8 +8,6 @@ type Props = {
 };
 
 const Info: React.FC<Props> = ({ companyName, amountOfEmployees, amountOfPremiumed, amountOfGoingUp }) => {
-
-
 	return (
 		<div className="info">
 			<h1 className="info__title">Учет сотрудников в компании: {companyName}</h1>

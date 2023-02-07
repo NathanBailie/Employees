@@ -16,7 +16,7 @@ const Adder: React.FC<Props> = ({ onCreateNewEmployee }) => {
 			setError(true);
 			setErrorMessage('Пожалуйста заполните поле')
 			return;
-		}
+		};
 		if (+salary < 100) {
 			setError(true);
 			setErrorMessage('Зарплата должна больше $100')

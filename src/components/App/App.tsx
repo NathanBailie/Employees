@@ -49,7 +49,7 @@ const App: React.FC = () => {
 					newValue = !person['nameEdit'];
 				} else if (property === 'salaryEdit') {
 					newValue = !person['salaryEdit'];
-				}
+				};
 				return { ...person, [property]: newValue }
 			};
 			return person;

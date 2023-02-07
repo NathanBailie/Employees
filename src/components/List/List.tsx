@@ -28,7 +28,7 @@ const List: React.FC<Props> = ({ finalData, onToggleProperty, onDeleteEmployee, 
 		} else if (raised) {
 			nameClasses += ' list__name_raised';
 			raiseClasses += ' list__raise_active';
-		}
+		};
 
 		return (
 			<div className="list__item" key={id}>
