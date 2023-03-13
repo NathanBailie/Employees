@@ -1,4 +1,4 @@
-# WordPress
+# Employees
 
 ## Description
 An application for managing a list of employees. It can raise, premium, delete employees from the list, create new ones or find any of have already been added.
