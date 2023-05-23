@@ -15,8 +15,8 @@ const App: React.FC = () => {
 		createEmployee('Mikky B.', 1000),
 		createEmployee('Sam O.', 1200),
 	];
+	const companyName = 'Company';
 	const [employees, setEmployees] = useState(data);
-	const [companyName, setCompanyName] = useState('Company');
 	const amountOfEmployees: number = employees.length;
 	const amountOfPremiumed: number = employees.filter(person => person.premiumed).length;
 	const amountOfGoingUp: number = employees.filter(person => person.raised).length;
