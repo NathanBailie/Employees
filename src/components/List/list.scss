@@ -45,16 +45,19 @@
 
 		&_premiumed {
 			text-decoration-color: orange;
+			color: orange;
 		}
 
 		&_raised {
 			text-decoration-color: #3cb75c;
+			color: #3cb75c;
 		}
 
 		&_premiumedAndRaised {
-			font-size: 22px;
+			font-size: 24px;
 			text-decoration-color: gold;
-			color: #04c16a;
+			text-decoration-thickness: 5px;
+			color: black;
 		}
 	}
 
